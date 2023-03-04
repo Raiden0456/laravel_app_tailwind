@@ -12,7 +12,10 @@ class ProductsTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+        ->setTableRowUrl(function($row) {
+            return route('products.edit', $row);
+        });
     }
 
     public function columns(): array
@@ -30,4 +33,5 @@ class ProductsTable extends DataTableComponent
                 ->sortable(),
         ];
     }
+
 }
